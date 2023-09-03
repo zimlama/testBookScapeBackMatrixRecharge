@@ -105,13 +105,13 @@ const logginGoogle = async (req, res, next) => {
         console.log(
           "si existen los datos de google en la base previamente se busca su CART"
         );
-        const Shoppingcart = await ShoppingCart.findOne({
+        const shoppingcart = await ShoppingCart.findOne({
           attributes: ["cart_id"],
           where: {
             email: credenciales.email,
           },
         });
-        console.log("usuario ya registrado por gogole, se busco Cart", Shoppingcart)
+        console.log("usuario ya registrado por gogole, se busco Cart", shoppingcart)
         console.log(
           "se envia Usuario Ya registrado con googlem y los datos de usuario"
         );
@@ -121,7 +121,7 @@ const logginGoogle = async (req, res, next) => {
           id: userCheckGoogle.id,
           email: userCheckGoogle.email,
           username: userCheckGoogle.username,
-          shoppingcartId: Shoppingcart,
+          shoppingcartId: shoppingcart,
         });
       } else {
         console.log(
@@ -226,7 +226,7 @@ const loginUser = async (req, res, next) => {
         { expiresIn: "12h" }
       );
 
-      const Shoppingcart = await ShoppingCart.findOne({
+      const shoppingcart = await ShoppingCart.findOne({
         attributes: ["cart_id"],
         where: {
           UserId: userCheck.id,
@@ -239,7 +239,7 @@ const loginUser = async (req, res, next) => {
         id: userCheck.id,
         email: userCheck.email,
         username: userCheck.username,
-        shoppingcartId: Shoppingcart,
+        shoppingcartId: shoppingcart,
       });
     }
   } catch (error) {
