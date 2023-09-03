@@ -105,11 +105,19 @@ const logginGoogle = async (req, res, next) => {
         console.log(
           "si existen los datos de google en la base previamente se busca su CART"
         );
-        const shoppingcart = await ShoppingCart.findOne({
+        /* const shoppingcart = await ShoppingCart.findOne({
           attributes: ["cart_id"],
           where: {
             email: credenciales.email,
           },
+        }); */
+        const shoppingcart = await User.findOne({
+          where: {
+            email: credenciales.email,
+          },
+          include: {
+            model: ShoppingCart, attributes: ["cart_id"],
+          }
         });
         console.log("usuario ya registrado por gogole, se busco Cart", shoppingcart)
         console.log(
