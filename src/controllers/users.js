@@ -113,7 +113,7 @@ const logginGoogle = async (req, res, next) => {
           },
         }); */
         const shoppingcart = await ShoppingCart.findOne({
-          attributes:[card_id],
+          attributes:["card_id"],
           include:{
             model: User,
             where: {
