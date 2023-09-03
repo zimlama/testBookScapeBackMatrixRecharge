@@ -17,26 +17,33 @@ const findById = async (req, res, next) => {
       ],
       include: [
         {
+          model: Publisher,
+          attributes: ["name","id"],
+        },
+        {
           model: Tag,
-          attributes: ["name"],
+          attributes: ["name","id"],
           through: {
             attributes: [],
           },
         },
         {
           model: Author,
-          attributes: ["name"],
+          attributes: ["name","id"],
           through: {
             attributes: [],
           },
         },
         {
           model: Language,
-          attributes: ["language"],
+          attributes: ["language","id"],
         },
       ],
     });
-    res.send(book);
+    if (!book) {
+      return res.status(404).json({ message: "Not found!", book: book });
+    }
+    return res.status(200).json(book);
   } catch (error) {
     next(error);
   }
