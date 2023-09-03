@@ -128,7 +128,6 @@ const logginGoogle = async (req, res, next) => {
           "se envia Usuario Ya registrado con googlem y los datos de usuario"
         );
         return res.send({
-          message: "Usuario Ya registrado con google",
           message: "Login succesfully!",
           id: userCheckGoogle.id,
           email: userCheckGoogle.email,
@@ -161,6 +160,12 @@ const logginGoogle = async (req, res, next) => {
           userCheckExistingUser.sub = credenciales.sub;
           await userCheckExistingUser.save();
           console.log("se agregaron los datos de google");
+          return res.send({
+            message: "Login succesfully!",
+            message_2: "se agregaron los datos de google",
+            id: userCheckExistingUser.id,
+            email: userCheckExistingUser.email,
+          })
         } else {
           console.log(
             "si no existe el mail del usuario se crea el usuario con todos los datos de google y usernane = email y name = name de google"
@@ -192,7 +197,7 @@ const logginGoogle = async (req, res, next) => {
           });
           console.log("se envia mensaje de usaurio creado succesfully");
           return res.send({
-            message: "User created succesfully!",
+            message: "Login succesfully!",
             id: newUser.id,
             email: newUser.email,
             cartId: cartToAssociate.cart_id,
