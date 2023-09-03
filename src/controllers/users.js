@@ -1,3 +1,4 @@
+
 const {
   User,
   ShoppingCart,
@@ -111,12 +112,13 @@ const logginGoogle = async (req, res, next) => {
             email: credenciales.email,
           },
         }); */
-        const shoppingcart = await User.findOne({
-          where: {
-            email: credenciales.email,
+        const shoppingcart = await ShoppingCart.findOne({
+          attributes:[card_id],
+          include:{
+            model: User,
+            where: {
+              email: credenciales.email,
           },
-          include: {
-            model: ShoppingCart, attributes: ["cart_id"],
           }
         });
         console.log("usuario ya registrado por gogole, se busco Cart", shoppingcart)
