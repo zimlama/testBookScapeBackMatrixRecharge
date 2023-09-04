@@ -125,7 +125,7 @@ const logginGoogle = async (req, res, next) => {
           id: userCheckGoogle.id,
           email: userCheckGoogle.email,
           username: userCheckGoogle.username,
-          shoppingcartId: shoppingcart,
+          shoppingcartId: shoppingcart.datavalue.cart_id,
         });
       } else {
         console.log(
