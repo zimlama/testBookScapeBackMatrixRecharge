@@ -13,6 +13,6 @@ router.use('/users', users);
 router.use("/favorites", favorite);
 router.use("/reviews", review);
 router.use("/shoppingcart", shoppingcart);
-
+router.use("/orders", orders);
 
 module.exports = router;
