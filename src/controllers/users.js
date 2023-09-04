@@ -123,7 +123,7 @@ const logginGoogle = async (req, res, next) => {
           id: userCheckGoogle.id,
           email: userCheckGoogle.email,
           username: userCheckGoogle.username,
-          shoppingcartId: [shoppingcart],
+          cartId: ShoppingCart.dataValues.cart_id,
         });
       } else {
         console.log(
