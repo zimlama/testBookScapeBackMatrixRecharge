@@ -5,6 +5,7 @@ const users = require('./users')
 const favorite= require('./favorite')
 const review = require('./review')
 const shoppingcart = require('./r.shoppingcart')
+const orders = require('./orders')
 
 const router = express.Router();
 
