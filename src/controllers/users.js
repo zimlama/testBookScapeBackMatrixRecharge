@@ -121,7 +121,7 @@ const logginGoogle = async (req, res, next) => {
           "se envia Usuario Ya registrado con googlem y los datos de usuario"
         );
         return res.send({
-          message: "Usuario Ya registrado con google",
+          message: "Login succesfully!",
           id: userCheckGoogle.id,
           email: userCheckGoogle.email,
           username: userCheckGoogle.username,
