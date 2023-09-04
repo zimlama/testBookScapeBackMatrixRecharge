@@ -122,12 +122,14 @@ const logginGoogle = async (req, res, next) => {
           cartId: shoppingcart.ShoppingCart.cart_id,
         }); */
         console.log("esot es return res.send:",{
+          message: "Login succesfully!",
           id: shoppingcart.id,
           email: shoppingcart.email,
           username: shoppingcart.username,
           cartId: shoppingcart.ShoppingCart ? shoppingcart.ShoppingCart.cart_id : null,
         });
         return res.send({
+          message: "Login succesfully!",
           id: shoppingcart.id,
           email: shoppingcart.email,
           username: shoppingcart.username,
