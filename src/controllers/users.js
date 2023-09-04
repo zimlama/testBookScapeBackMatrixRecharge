@@ -117,15 +117,13 @@ const logginGoogle = async (req, res, next) => {
           },
         });
         console.log("usuario ya registrado por gogole, se busco Cart", shoppingcart)
-        console.log(
-          "se envia Usuario Ya registrado con googlem y los datos de usuario"
-        );
+        console.log("se envia Usuario Ya registrado con googlem y los datos de usuario");
         return res.send({
           message: "Login succesfully!",
           id: userCheckGoogle.id,
           email: userCheckGoogle.email,
           username: userCheckGoogle.username,
-          shoppingcartId: shoppingcart.datavalue.cart_id,
+          shoppingcartId: [shoppingcart],
         });
       } else {
         console.log(
