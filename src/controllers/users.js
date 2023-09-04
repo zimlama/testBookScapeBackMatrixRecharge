@@ -114,13 +114,19 @@ const logginGoogle = async (req, res, next) => {
         });
         console.log("usuario ya registrado por gogole, se busco Cart", shoppingcart)
         console.log("se envia Usuario Ya registrado con googlem y los datos de usuario");
-        return res.status(200).json({
+        /* return res.status(200).json({
           message: "Login succesfully!",
           id: userCheckGoogle.id,
           email: userCheckGoogle.email,
           username: userCheckGoogle.username,
           cartId: shoppingcart.ShoppingCart.cart_id,
-        });
+        }); */
+        return res.send({
+          id: shoppingcart.id,
+          email: shoppingcart.email,
+          username: shoppingcart.username,
+          cartId: shoppingcart.ShoppingCart ? shoppingcart.ShoppingCart.cart_id : null,
+        }); 
       } else {
         // console.log(
         //   "si no existian los datos de goole verificamos si existia el mail aunque sea"
