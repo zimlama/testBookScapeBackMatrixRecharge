@@ -5,7 +5,9 @@ const users = require('./users')
 const favorite= require('./favorite')
 const review = require('./review')
 const shoppingcart = require('./r.shoppingcart')
+const mail = require('./mail');
 const orders = require('./orders')
+
 
 const router = express.Router();
 
@@ -14,7 +16,7 @@ router.use('/users', users);
 router.use("/favorites", favorite);
 router.use("/reviews", review);
 router.use("/shoppingcart", shoppingcart);
-router.use("/orders", orders);
+router.use("/mail", mail);
 
 
 module.exports = router;

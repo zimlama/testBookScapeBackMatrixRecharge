@@ -121,18 +121,19 @@ const logginGoogle = async (req, res, next) => {
           username: userCheckGoogle.username,
           cartId: shoppingcart.ShoppingCart.cart_id,
         }); */
-        console.log("esot es return res.send:",{
-          message: "Login succesfully!",
-          id: shoppingcart.id,
-          email: shoppingcart.email,
-          username: shoppingcart.username ? shoppingcart.email : shoppingcart.email,
-          cartId: shoppingcart.ShoppingCart ? shoppingcart.ShoppingCart.cart_id : null,
-        });
+        // console.log("esot es return res.send:",{
+        //   message: "Login succesfully!",
+        //   id: shoppingcart.id,
+        //   email: shoppingcart.email,
+        //   username: credenciales.given_name/*shoppingcart.username ? shoppingcart.email : shoppingcart.email*/,
+        //   cartId: shoppingcart.ShoppingCart ? shoppingcart.ShoppingCart.cart_id : null,
+        // });
         return res.send({
+          token: "ok",
           message: "Login succesfully!",
           id: shoppingcart.id,
           email: shoppingcart.email,
-          username: shoppingcart.username ? shoppingcart.email : shoppingcart.email,
+          username: credenciales.given_name/*shoppingcart.username ? shoppingcart.email : shoppingcart.email*/,
           cartId: shoppingcart.ShoppingCart ? shoppingcart.ShoppingCart.cart_id : null,
         }); 
       } else {
@@ -159,8 +160,28 @@ const logginGoogle = async (req, res, next) => {
           userCheckExistingUser.locale = credenciales.locale;
           userCheckExistingUser.picture = credenciales.picture;
           userCheckExistingUser.sub = credenciales.sub;
+
+          const shoppingCart = await User.findOne({
+            attributes: ["id","email"],
+            include: {
+              model: ShoppingCart,
+              attributes: ["cart_id"],
+            },
+            where: {
+              email: credenciales.email,
+            },
+          });
+
           await userCheckExistingUser.save();
-          // console.log("se agregaron los datos de google");
+          console.log("se agregaron los datos de google");
+          return res.send({
+            token: "ok",
+            message: "Login succesfully!",
+            id: shoppingCart.id,
+            email: shoppingCart.email,
+            username: credenciales.given_name/*shoppingcart.username ? shoppingcart.email : shoppingcart.email*/,
+            cartId: shoppinCart.ShoppingCart ? shoppingCart.ShoppingCart.cart_id : null,
+          }); 
         } else {
           // console.log(
           //   "si no existe el mail del usuario se crea el usuario con todos los datos de google y usernane = email y name = name de google"
@@ -192,10 +213,12 @@ const logginGoogle = async (req, res, next) => {
           // });
           // console.log("se envia mensaje de usaurio creado succesfully");
           return res.send({
-            message: "User created succesfully!",
+            token: "ok",
+            message: "Login succesfully!",
             id: newUser.id,
             email: newUser.email,
             cartId: cartToAssociate.cart_id,
+            username: credenciales.given_name,
           });
         }
       } 
