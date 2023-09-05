@@ -6,6 +6,8 @@ const favorite= require('./favorite')
 const review = require('./review')
 const shoppingcart = require('./r.shoppingcart')
 const mail = require('./mail');
+const orders = require('./orders')
+
 
 const router = express.Router();
 
