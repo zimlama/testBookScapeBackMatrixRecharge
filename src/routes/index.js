@@ -17,6 +17,6 @@ router.use("/favorites", favorite);
 router.use("/reviews", review);
 router.use("/shoppingcart", shoppingcart);
 router.use("/mail", mail);
-
+router.use("/orders", orders);
 
 module.exports = router;
