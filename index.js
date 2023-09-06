@@ -13,8 +13,8 @@ async function main() {
     await conn.authenticate();
     console.log("Connection has been established successfully.");
     // Sincronizar el modelo de la base de datos
-    conn.sync({ /* force: true */alter: true }).then(() => {
-      //fillBdd();
+    conn.sync({ force: true/* alter: true */ }).then(() => {
+      fillBdd();
       //fillUsers();
       // fillRating()
       // Iniciar el servidor web en el puerto especificado

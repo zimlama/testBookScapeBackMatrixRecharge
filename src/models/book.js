@@ -45,10 +45,10 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: true, 
     },
-    rating_ave: {
+    /* rating_ave: {
       type: DataTypes.FLOAT,
       allowNull: true,
-    },
+    }, */
     image: {
       type: DataTypes.TEXT,
       allowNull: false,
